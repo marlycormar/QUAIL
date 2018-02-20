@@ -2,7 +2,7 @@ import json
 import datetime
 
 from quail.utils.file_manipulation_mixin import FileManipulationMixin as file_util
-from quail.utils.csv_to_json import csv_to_json
+from quail.utils.format_transforms import csv_to_json
 from quail.utils.redcap_util.data_quality import record_has_data
 from cappy import API
 

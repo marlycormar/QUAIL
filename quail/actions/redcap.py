@@ -51,6 +51,17 @@ def get_meta(quail_conf, project_name):
     del proj_data['notes']
     project = redcap_batch.Batcher(**proj_data)
     project.pull_metadata()
+    batch = {
+        'project_name': project_name,
+        'date': project.date,
+        'metadata_date': project.date,
+        'path': file_util.join([project.batch_root, project.date]),
+    }
+    config.add_batch(project_name,
+                     project.date,
+                     batch)
+    config.save()
+    project.pull_metadata()
     print('Done pulling metadata for {}'.format(project_name))
 
 def get_data(quail_conf, project_name, pull_metadata=False):
