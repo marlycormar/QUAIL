@@ -64,8 +64,11 @@ class QuailConfig(file_util):
         """
         Returns the most recent batch path for a given source
         """
-        source_batches = list(self.data['batches'][source_name].items())
-        most_recent_batch_path = sorted(source_batches, key=lambda i: i[0])[-1][1]['path']
+        try:
+            source_batches = list(self.data['batches'][source_name].items())
+            most_recent_batch_path = sorted(source_batches, key=lambda i: i[0])[-1][1]['path']
+        except:
+            most_recent_batch_path = file_util.join([self.get_root, 'batches', source_name])
         return copy(most_recent_batch_path)
 
 
