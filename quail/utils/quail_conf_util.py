@@ -59,6 +59,7 @@ class QuailConfig(file_util):
         return self.get_data()
 
     def get_root(self):
+        print('in get root', self.data)
         return copy(self.data['quail_root'])
 
     def get_most_recent_batch(self, source_name):
