@@ -8,6 +8,7 @@ class QuailConfig(file_util):
     def __init__(self, path):
         self.path = path
         self.data = self.read(path, 'yaml')
+        print(self.data)
 
     def serialize(self):
         return yaml.dump(self.data,
