@@ -108,6 +108,8 @@ class Field(TableMaker):
         """
         self.add_column('quail_is_unique_field', 'BOOLEAN DEFAULT 0')
         self.data[0]['quail_is_unique_field'] = 1
+        for item in self.data[1:]:
+            item['quail_is_unique_field'] = 0
         self.insert_data = self.make_inserts('fields', self.data, insert_batch_size)
 
 
