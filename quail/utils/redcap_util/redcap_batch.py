@@ -30,6 +30,7 @@ class Batcher(file_util):
         if metadata_type:
             calls = [( m_type, call ) for m_type, call in calls if m_type == metadata_type]
         for m_type, call in calls:
+            print("This is the call's content " + str(call().content))
             data = json.loads(str(call().content, 'utf-8'))
             today = str(datetime.date.today())
             self.date = today
@@ -54,6 +55,9 @@ class Batcher(file_util):
         self.instruments = list(set([item['form_name'] for item in metadata]))
         self.event_instrument_mapping = {}
         for item in instrument_event:
+            if(str(item) == 'error'):
+                break
+            print("The item['form'] is " + str(item))
             form = self.event_instrument_mapping.setdefault(item['form'], set())
             form.add(item['unique_event_name'])
 
